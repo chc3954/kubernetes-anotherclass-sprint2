@@ -31,6 +31,10 @@ spec:
     spec:
       nodeSelector:
         kubernetes.io/hostname: k8s-master
+      tolerations:
+        - key: "node-role.kubernetes.io/control-plane"
+          operator: "Exists"
+          effect: "NoSchedule"
       containers:
         - name: api-tester-2221
           image: 1pro/api-tester:v1.0.0
